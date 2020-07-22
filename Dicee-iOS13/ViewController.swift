@@ -16,10 +16,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var diceImageView2:
     UIImageView!
     
+    var leftDiceNumber = 5
+    var rightDiceNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
+        diceImageView1.image =
+            [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][leftDiceNumber]
+        
+        diceImageView2.image =
+            [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][rightDiceNumber]
         
         //in order to change the opacity of the button we can type the below code
         //diceImageView1.alpha = 0.5
@@ -27,28 +35,34 @@ class ViewController: UIViewController {
         //diceImageView2.alpha = 0.5
     }
     
-    var leftDiceNumber = 0
-    var rightDiceNumber = 5
+
     
     @IBAction func rollButtonPressed(_ sender: UIButton) {
         
-        
-        if(leftDiceNumber>5){
+        if(leftDiceNumber > 5){
             leftDiceNumber = 0
-        }
-        else{
-            diceImageView2.image =
-            [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][rightDiceNumber]
-             rightDiceNumber = leftDiceNumber - 1
-        }
-        if(rightDiceNumber < 0){
-            leftDiceNumber = 5
+            diceImageView1.image =
+                                  [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][leftDiceNumber]
         }
         else{
             diceImageView1.image =
-                       [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][leftDiceNumber]
+                                  [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][leftDiceNumber]
             leftDiceNumber = leftDiceNumber + 1
+           
         }
+        
+        if(rightDiceNumber < 0){
+            rightDiceNumber = 5
+
+        }
+        else{
+            
+            diceImageView2.image =
+            [#imageLiteral(resourceName: "DiceOne"),#imageLiteral(resourceName: "DiceTwo"),#imageLiteral(resourceName: "DiceThree"),#imageLiteral(resourceName: "DiceFour"),#imageLiteral(resourceName: "DiceFive"),#imageLiteral(resourceName: "DiceSix")][rightDiceNumber]
+            rightDiceNumber = rightDiceNumber - 1
+            
+        }
+        
     }
     
 }
